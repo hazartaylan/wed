@@ -31,6 +31,7 @@ body {
   margin: 0;
   min-width: 320px;
   overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
   font-family: "Manrope", sans-serif;
   color: var(--ink);
   background:
@@ -739,6 +740,7 @@ section {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--muted);
+  overflow-wrap: anywhere;
 }
 
 .invitation-card__intro,
@@ -1021,10 +1023,11 @@ section {
   .hero {
     min-height: auto;
     padding-top: 58px;
+    gap: 30px;
   }
 
   .hero-card {
-    max-width: 450px;
+    max-width: none;
   }
 
   .detail-grid,
@@ -1047,41 +1050,115 @@ section {
     --container: min(100vw - 24px, 1180px);
   }
 
+  body::before,
+  .grain,
+  .ambient {
+    display: none;
+  }
+
   .site-header {
     flex-direction: column;
     align-items: flex-start;
     gap: 14px;
+    padding: 16px 0 12px;
+    position: relative;
   }
 
   .main-nav {
     width: 100%;
-    justify-content: space-between;
-    gap: 10px;
-    overflow-x: auto;
-    padding: 10px 14px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    padding: 8px;
+    border-radius: 24px;
   }
 
   .main-nav a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    text-align: center;
     white-space: nowrap;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.72);
   }
 
   .hero__orbit--one,
   .hero__orbit--two {
-    right: -7rem;
+    display: none;
+  }
+
+  main {
+    padding-bottom: 72px;
+  }
+
+  .hero {
+    padding: 34px 0 24px;
+    gap: 24px;
+  }
+
+  .hero h1 {
+    font-size: clamp(3rem, 14vw, 4.5rem);
+  }
+
+  .hero h1 span {
+    margin-top: 12px;
+    font-size: 0.96rem;
+    letter-spacing: 0.05em;
+    line-height: 1.6;
+  }
+
+  .hero__lead {
+    margin-top: 18px;
+    font-size: 0.98rem;
+    line-height: 1.8;
+  }
+
+  .hero-card {
+    width: 100%;
+    padding: 26px 22px;
+  }
+
+  .hero-card__names {
+    font-size: 1.8rem;
+  }
+
+  .hero-card__date {
+    font-size: clamp(2.7rem, 12vw, 3.6rem);
+  }
+
+  .section-heading {
+    margin-bottom: 20px;
+  }
+
+  .section-heading h2,
+  .location-card h2 {
+    font-size: clamp(2rem, 11vw, 3rem);
+  }
+
+  .invitation,
+  .details,
+  .countdown,
+  .location {
+    padding-top: 68px;
   }
 
   .detail-grid,
   .countdown-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .invitation-card__seal {
     position: static;
     margin-bottom: 24px;
+    width: 84px;
+    height: 84px;
   }
 
   .hero__actions {
     flex-direction: column;
+    margin-top: 24px;
   }
 
   .button {
@@ -1093,8 +1170,8 @@ section {
   .experience-panel,
   .countdown-note,
   .invitation-card {
-    padding-left: 22px;
-    padding-right: 22px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 
   .floral--hero-left,
@@ -1103,10 +1180,140 @@ section {
     display: none;
   }
 
+  .invitation-card::before {
+    inset: 12px;
+  }
+
+  .invitation-card__couple {
+    font-size: clamp(2.2rem, 10vw, 2.8rem);
+  }
+
+  .invitation-card__families {
+    margin-bottom: 18px;
+    letter-spacing: 0.04em;
+    font-size: 0.74rem;
+  }
+
+  .invitation-card__intro {
+    font-size: clamp(1.55rem, 8vw, 2rem);
+  }
+
+  .invitation-card__footer {
+    gap: 10px;
+  }
+
+  .invitation-card__footer span {
+    width: 100%;
+  }
+
+  .experience-panel {
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+
+  .experience-panel__steps {
+    width: 100%;
+  }
+
+  .experience-panel__steps span {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .countdown-card {
+    padding: 24px 14px;
+  }
+
+  .countdown-card span {
+    font-size: clamp(2.4rem, 11vw, 3.2rem);
+  }
+
+  .countdown-note .hero__actions {
+    margin-top: 20px;
+  }
+
+  .location-card {
+    gap: 18px;
+    padding: 22px 20px;
+  }
+
+  .location-card__content p {
+    line-height: 1.75;
+  }
+
+  .location-card__visual {
+    min-height: 180px;
+  }
+
+  .location-card__ring {
+    width: min(58vw, 220px);
+  }
+
   .splash__floral {
-    width: 12rem;
-    height: 12rem;
-    opacity: 0.7;
+    width: 9rem;
+    height: 9rem;
+    opacity: 0.45;
+  }
+
+  .splash__door::before {
+    inset: 14px;
+    border-radius: 22px;
+  }
+
+  .splash__center {
+    width: min(100vw - 28px, 420px);
+    gap: 14px;
+    padding: 24px 18px;
+  }
+
+  .splash__title {
+    font-size: clamp(2.7rem, 14vw, 4rem);
+  }
+
+  .splash__text {
+    font-size: 0.94rem;
+    line-height: 1.65;
+  }
+
+  .splash__lock {
+    width: 78px;
+    height: 96px;
+  }
+
+  .splash__lock-loop {
+    width: 38px;
+    height: 34px;
+    border-width: 5px;
+  }
+
+  .splash__lock-body {
+    width: 64px;
+    height: 58px;
+    border-radius: 18px;
+  }
+}
+
+@media (max-width: 520px) {
+  .main-nav {
+    grid-template-columns: 1fr;
+  }
+
+  .detail-grid,
+  .countdown-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero h1 span {
+    max-width: 18rem;
+  }
+
+  .site-footer {
+    padding-bottom: 40px;
+    font-size: 0.92rem;
+  }
+
+  .splash__floral {
+    display: none;
   }
 }
 
